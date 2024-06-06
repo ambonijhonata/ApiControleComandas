@@ -1,0 +1,4 @@
+Executar o comando "npm install" na raiz do projeto
+Executar o comando "npm start"
+
+Ter o node e postgress instalado.
