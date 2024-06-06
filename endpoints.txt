@@ -1,0 +1,101 @@
+=====================Produtos=====================
+post http://localhost:3000/products: cadastra um produto
+
+{
+    "name": "Pizza",
+    "decription": "Pizza de camarao 8 fatias",
+    "price": 45.50,
+    "active":true,
+    "category_id": 1
+
+}
+
+put http://localhost:3000/products/{id_produto}: edita um produto
+{
+    "name": "coca cola",
+    "price": 10,
+    "active": true,
+    "category_id": 2
+
+}
+
+get http://localhost:3000/products: retorna todos os produtos
+get http://localhost:3000/products/{id_produto}: retorna o produto pelo ID
+get http://localhost:3000/products/category/{id_category}: retorna todos os produtos de uma a categoria com base em seu ID
+
+delete http://localhost:3000/products/{id_produto}: deleta um produto
+
+=====================Produtos=====================
+
+
+=====================cliente=====================
+post http://localhost:3000/clientes : cadastra cliente
+{
+    name: "required"
+}
+
+put http://localhost:3000/clientes/5: edita um cliente
+post http://localhost:3000/clientes : cadastra cliente
+{
+    name: "required"
+}
+
+get http://localhost:3000/clientes: retorna todos os clientes
+get http://localhost:3000/clientes?nome=jhonata: retorna o cliente pelo nome
+
+delete http://localhost:3000/clientes/5 :deleta um cliente com base no ID
+=====================cliente=====================
+
+=====================Comanda=====================
+post http://localhost:3000/comandas: cadastra uma comanda
+{
+    "id_cliente": 7,
+    "id_mesa": 8
+}
+
+get http://localhost:3000/comandas: retorna todas as comandas
+get http://localhost:3000/comandas?cliente=mario: retorna as comandas do cliente por nome
+get http://localhost:3000/comandas?id=20 retorna a comanda com base no ID
+http://localhost:3000/comandas?id_mesa=8 retorna todas as comandas de uma mesa
+
+put: http://localhost:3000/comandas/23 edita uma comanda com base no id
+{
+    "id_cliente": 6,
+    "id_mesa": 7,
+    "active": 1 //1 = ativo 0 = inativo    
+}
+
+delete: http://localhost:3000/comandas/23 deleta uma comanda com base no ID
+
+COMANDAS E Produtos
+post: http://localhost:3000/comandas/comanda-produto adiciona um produto a uma comanda
+{
+    "id_comanda": 27,
+    "produtos": [
+        
+        {
+            "id_produto": 13,
+            "quantidade": 2
+        }
+    ]
+}
+
+get http://localhost:3000/comandas/comanda-produto retorna todas as comandas em aberto
+get: http://localhost:3000/comandas/comanda-produto?id_mesa=7 retorna todos os produtos de uma mesa com base no id dela
+get: http://localhost:3000/comandas/comanda-produto?id_comanda=24 retorna os dados de uma comanda
+
+put: http://localhost:3000/comandas/comanda-produto: edita a quantidade do produto na comanda
+{
+    "id_comanda": 24,
+    "produtos": [
+        
+        {
+            "id_produto": 11,
+            "quantidade": 2
+        },
+        {
+            "id_produto": 13,
+            "quantidade": 3
+        }
+    ]
+}
